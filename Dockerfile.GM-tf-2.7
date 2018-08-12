@@ -184,7 +184,7 @@ RUN MAP=$(curl -u ${CRED} ftp://yifileserver/DOCKER_IMAGES/Tensorflow/map.csv -o
     FTP_PATH=$(awk -F, '$6 == ${SRV}' map.csv |  awk -F [,] '$5 == 2.7' | awk -F, '$7~"1.8.0"' | awk -F, '{print $4}')  && \
     FILE_NAME=$(awk -F, '$6 == ${SRV}' map.csv |  awk -F [,] '$5 == 2.7' | awk -F, '$7~"1.8.0"' | awk -F, '{print $4}' | awk -F [/] '{print $7}')  && \    
     curl -u ${CRED} ${FTP_PATH} -o ${FILE_NAME} && \
-    pip --no-cache-dir install ${PKG} && \
+    pip --no-cache-dir install ${FILE_NAME} && \
     rm -f ${PKG}
     
     
